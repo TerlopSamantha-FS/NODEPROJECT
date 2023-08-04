@@ -1,6 +1,7 @@
 const http = require('http');
 require('dotenv').config();
+const app = require('./app/app');
 
-http.createServer().listen(process.env.PORT, () => {
-    console.log('Node is up and running on port ${process.env.PORT}');
+http.createServer(app).listen(process.env.PORT, () => {
+    console.log('Service is up', process.env.PORT);
 });
