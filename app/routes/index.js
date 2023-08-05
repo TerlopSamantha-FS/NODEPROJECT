@@ -77,7 +77,7 @@ router.patch('/:id', (req, res) => {
   const { id } = req.params;
   const { data } = req.body;
   let arrayId = parseInt(id) - 1;
-
+// Checking to ensure the index exists in the todo array.
   if(todos[arrayId] !== undefined) {
     todos[arrayId] = {data};
     console.log('params >>>', id);
@@ -90,7 +90,7 @@ router.patch('/:id', (req, res) => {
         method: req.method,
       }, 
     });
-  } else {
+  } else {// The index doesn't exist in the todo array.
     res.status(404).json({ 
       message: `PATCH - UNSUCCESSFUL! ID NOT FOUND`,
       metadata: {
@@ -106,7 +106,7 @@ router.patch('/:id', (req, res) => {
 router.delete('/:id', (req, res) => {
   let { id } = req.params;
   let arrayId = (parseInt(id) - 1);
-
+// Checking to ensure the index exists in the todo array.
   if(todos[arrayId] !== undefined) {
       todos.splice(arrayId, 1);
       console.log('params >>>', id);
@@ -118,7 +118,7 @@ router.delete('/:id', (req, res) => {
           method: req.method,
         }, 
       });
-    } else {
+    } else {// The index doesn't exist in the todo array.
       res.status(404).json({ 
         message: `GET - UNSUCCESSFUL! ID NOT FOUND`,
         metadata: {
