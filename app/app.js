@@ -19,6 +19,15 @@ app.use((req, res, next) => {
     next(error);
 });
 
+`localhost:3000/assignment`;
+app.use('/assignment', router);
+
+app.use((req, res, next) => {
+    const error = new Error('Not Found');
+    error.status = 404;
+    next(error);
+});
+
 app.use((err, req, res, next) => {
     // console.log("ERROR >>>", err);
     res
